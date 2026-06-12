@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Requirement: Meta Tag: width=device-width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 2: Responsive Web Layout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Mobile-First Base Styles */
+        body { font-size: 1rem; }
+        
+        /* Ensure touch targets are accessible */
+        button, a { min-height: 44px; min-width: 44px; }
+        
+        /* Smooth transition for menu */
+        #mobile-menu { transition: transform 0.3s ease-in-out; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Header / Nav -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="text-xl font-bold text-blue-600">FluidDesign</div>
+            
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex gap-6">
+                <a href="#" class="hover:text-blue-600">Home</a>
+                <a href="#" class="hover:text-blue-600">Projects</a>
+                <a href="#" class="hover:text-blue-600">Contact</a>
+            </div>
+
+            <!-- Hamburger Button -->
+            <button id="menu-btn" class="md:hidden p-2 text-slate-600" aria-label="Toggle menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        
+        <!-- Mobile Nav -->
+        <div id="mobile-menu" class="md:hidden fixed inset-y-0 right-0 w-64 bg-white shadow-lg transform translate-x-full z-40 p-6">
+            <button id="close-btn" class="mb-8">Close</button>
+            <div class="flex flex-col gap-4">
+                <a href="#" class="block p-2">Home</a>
+                <a href="#" class="block p-2">Projects</a>
+                <a href="#" class="block p-2">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Layout (Grid Macro, Flexbox Micro) -->
+    <main class="max-w-6xl mx-auto p-4 md:p-8">
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-12">
+            <div>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Content is Like Water</h1>
+                <p class="text-lg text-slate-600 mb-6">Building responsive architectures from the content out using fluid units like rem, percentages, and viewport widths.</p>
+                <button class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold">Start Learning</button>
+            </div>
+            <div class="bg-blue-100 rounded-2xl h-64 flex items-center justify-center border-2 border-dashed border-blue-300">
+                <span class="text-blue-500 font-medium">Fluidity Placeholder</span>
+            </div>
+        </section>
+
+        <!-- Feature Cards (Responsive Grid) -->
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                <h3 class="font-bold mb-2">Flexible Grid</h3>
+                <p class="text-sm text-slate-500">Macro layout handling screen resizing seamlessly.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                <h3 class="font-bold mb-2">Micro Flexbox</h3>
+                <p class="text-sm text-slate-500">Alignment and spacing inside components.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                <h3 class="font-bold mb-2">Fluid Units</h3>
+                <p class="text-sm text-slate-500">Using rem, %, and vw for scalability.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Toggle mobile menu
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => menu.classList.remove('translate-x-full'));
+        closeBtn.addEventListener('click', () => menu.classList.add('translate-x-full'));
+    </script>
+</body>
+</html>
